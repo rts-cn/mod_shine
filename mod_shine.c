@@ -138,7 +138,7 @@ static switch_status_t shine_file_open(switch_file_handle_t *handle, const char 
 
 	handle->samples = 0;
 	handle->samplerate = 32000;
-	handle->channels = 1;
+	// handle->channels = 1;
 	handle->format = 0;
 	handle->sections = 0;
 	handle->seekable = 0;
@@ -236,8 +236,7 @@ static switch_status_t shine_file_write(switch_file_handle_t *handle, void *data
 		if (left < room) {
 			for(i = 0; i < left; i++) {
 				*(buf1 + i) = *samples++;
-				*(buf2 + i) = 0;
-				// *(buf2 + i) = context->config.wave.channels == 1 ? 0 : *samples++;
+				*(buf2 + i) = handle->channels == 1 ? 0 : *samples++;
 			}
 
 			context->buffer_used += left;
@@ -249,7 +248,7 @@ static switch_status_t shine_file_write(switch_file_handle_t *handle, void *data
 			for(i = 0; i < room; i++) {
 				*(buf1 + i) = *samples++;
 				*(buf2 + i) = 0;
-				// *(buf2 + i) = context->config.wave.channels == 1 ? 0 : *samples++;
+				*(buf2 + i) = handle->channels == 1 ? 0 : *samples++;
 			}
 
 			mp3_data = shine_encode_frame(context->s, (void *)context->buffer, &written);
