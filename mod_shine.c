@@ -32,6 +32,8 @@
 #include <switch.h>
 #include "layer3.h"
 
+#define DEFAULT_SAMPLE_RATE 32000
+
 SWITCH_MODULE_LOAD_FUNCTION(mod_shine_load);
 SWITCH_MODULE_DEFINITION(mod_shine, mod_shine_load, NULL, NULL);
 
@@ -111,7 +113,7 @@ static switch_status_t shine_file_open(switch_file_handle_t *handle, const char 
 
 	context->config.mpeg.bitr = 48;
 	context->config.wave.channels = 2;  // even setting channels = 1, the result will be 2 channels, why?
-	context->config.wave.samplerate = 32000;
+	context->config.wave.samplerate = DEFAULT_SAMPLE_RATE;
 	context->s = shine_initialise(&context->config);
 	context->buffer_used = 0;
 	context->buffer = (int16_t *)malloc(2 * samp_per_frame * sizeof(int16_t));
@@ -137,7 +139,7 @@ static switch_status_t shine_file_open(switch_file_handle_t *handle, const char 
 	check_config(&context->config);
 
 	handle->samples = 0;
-	handle->samplerate = 32000;
+	handle->samplerate = DEFAULT_SAMPLE_RATE;
 	// handle->channels = 1;
 	handle->format = 0;
 	handle->sections = 0;
