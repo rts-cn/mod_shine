@@ -1,6 +1,6 @@
 /*
- * FreeSWITCH Modular Media Switching Software Library / Soft-Switch Application
- * Copyright (C) 2005-2012, Anthony Minessale II <anthm@freeswitch.org>
+ * FreeSWITCH Module for MP3 recording
+ * Copyright (C) 2013-2020, Seven Du <dujinfang@gmail.com>
  *
  * Version: MPL 1.1
  *
@@ -14,16 +14,14 @@
  * for the specific language governing rights and limitations under the
  * License.
  *
- * The Original Code is FreeSWITCH Modular Media Switching Software Library / Soft-Switch Application
+ * The Original Code is FreeSWITCH FreeSWITCH Module for MP3 recording
  *
  * The Initial Developer of the Original Code is
- * Anthony Minessale II <anthm@freeswitch.org>
+ * Seven Du <dujinfang@gmail.com>
  * Portions created by the Initial Developer are Copyright (C)
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
- *
- * Anthony Minessale II <anthm@freeswitch.org>
  *
  *
  * mod_shine.c -- Encode mp3 using shine
